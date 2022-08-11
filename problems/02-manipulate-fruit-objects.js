@@ -9,8 +9,12 @@ console.log(addKeyAndValueToAll(fruits, "inStock", true));
 */
 
 function addKeyAndValueToAll(array, key, value) {
-    // Your code here
+    return array.map(function (object) {
+        object[key] = value;
+        return object
+    });
 }
+// returns array of 31 fruits, and each fruit object includes "inStock: true"
 
 /* 08. `addKeyAndValueToOne()` - Return object at the given index array, adding the given key and
 value to that fruit object
@@ -20,8 +24,14 @@ console.log(addKeyAndValueToOne(fruits, "color", "red", 1));
 */
 
 function addKeyAndValueToOne(array, key, value, index) {
-    // Your code here
+    let obj = array[index]
+    obj[key] = value
+    return obj
 }
+
+
+
+// returns first object ("Apple"), including "color: red"
 
 /* 09. `updateKeyName()` - Change the old key name to the new key name in all
 objects, and return the resulting array.
@@ -32,8 +42,15 @@ console.log(updateKeyName(fruits, "nutritions", "nutrition"));
 */
 
 function updateKeyName(array, oldKey, newKey) {
-    // Your code here
+    return array.map(function (object) {
+        object[newKey] = object[oldKey]
+        delete object[oldKey]
+        return object
+    })
 }
+
+// returns fruits array, but every "nutritions" key had changed to "nutrition"
+
 
 /* 10. `updateIdValues()` - Change all of the "id" values to six-character
 strings, and return an array of all of the new id values.
@@ -65,4 +82,4 @@ function deleteKeysAndValues(array, keyToDelete) {
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
 
-module.exports = [ addKeyAndValueToAll, addKeyAndValueToOne, updateKeyName, updateIdValues, deleteKeysAndValues ];
+module.exports = [addKeyAndValueToAll, addKeyAndValueToOne, updateKeyName, updateIdValues, deleteKeysAndValues];
