@@ -66,9 +66,15 @@ console.log(updateIdValues(fruits));
 */
 
 function updateIdValues(array) {
-    // Your code here
-}
+    return array.map(object => {
+        let id = object.id
 
+        while(id.length !== 6){
+            id = "0" + id
+        }
+        return id
+    })
+}
 /* 11. `deleteKeysandValues()` - Delete the keyToDelete from the nutritions
 object from every fruit, and return the array.
 
@@ -77,9 +83,13 @@ console.log(deleteKeysAndValues(fruits, "sugar"));
 */
 
 function deleteKeysAndValues(array, keyToDelete) {
-    // Your code here
+    return array.map(object =>{
+        delete object.nutritions[keyToDelete]
+        return object
+    });
 }
 
+console.log(deleteKeysAndValues(fruits, "sugar"));
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
 
 module.exports = [addKeyAndValueToAll, addKeyAndValueToOne, updateKeyName, updateIdValues, deleteKeysAndValues];
